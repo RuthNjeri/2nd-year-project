@@ -1,0 +1,5 @@
+ <%= form_for(@userrequest) do |f| %> 
+<%=f.label :Towns %>
+<%=f.collection_select :town_id,Town.all,:id,:name, prompt:true %>
+<%=f.submit "submit" %>
+<%end%>

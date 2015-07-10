@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%=title%></title>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag  'blueprint/screen', :media =>'screen'%>
+   <%= stylesheet_link_tag  'blueprint/print', :media =>'print'%>
+    <%= stylesheet_link_tag  'blueprint/custom', :media =>'screen'%>
+    <%= javascript_include_tag "application" %>
+  
+</head>
+<body>
+   <div class="container">
+     <header>
+      <%= link_to image_tag("images.jpg", :alt =>"Land", :class=>"round"),root_path %>
+       <nav class ="round">
+        <ul>
+         <li><%= link_to 'Home', root_path %></li>
+         <% if signed_in?%>
+           <li><%= link_to 'Price Trends', '#' %></li>
+           <li><%= link_to 'What to Know', '#' %></li>   
+    <li><%= link_to 'Request Land', new_user_request_path %></li>  <li><%= link_to 'Users', '/users' %></li>
+           <li><%= link_to 'Profile', current_user %></li>
+        <%if  current_user.admin? %>        
+           <li> <%= link_to "New town", new_town_path %></li>
+            <%end%>
+          <li><%= link_to 'Notification '+Notification.where(user_id:current_user.id, seen:false).size.to_s, notifications_path %></li>
+     <li><%= link_to 'Settings', edit_user_path(current_user) %></li>
+           
+ 						<%end%>
+           
+			
+          
+  
+          
+         <li><%= link_to 'Help', help_path %></li>
+          <% if signed_in? %>
+           <li><%= link_to 'Sign out', signout_path %> </li>
+         <%else%>
+           <li><%= link_to 'Sign in', signin_path %> </li>
+         <%end%>
+      
+     
+      
+        </ul>			
+
+      </nav>
+   </header> 
+   <section class ="round">
+    <%flash.each do |key,value|%>
+      <div class="flash <%= key %>"><%=value%></div>
+    <%end%>
+     <%=yield%> 
+			
+
+
+    </section>
+     <%=debug(params) if Rails.env.development?%>
+     <footer>
+    <nav class="round">
+   <ul>
+   <li><%=link_to "About", '/static_pages/about'%></li>
+   <li><%=link_to "Contact", '/static_pages/contact'%></li>
+   </ul>
+   </nav>
+  </footer>
+  </div>
+ </body>
+</html>

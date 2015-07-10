@@ -1,0 +1,7 @@
+<%if !@notifications.nil?%>
+<% @notifications.each do |n| %><div>
+	<%=link_to User.find(Micropost.find(n.micropost_id).user_id).name, user_path(Micropost.find(n.micropost_id).user_id)  %>
+<%= Town.find(Micropost.find(n.micropost_id).town_id).name  %>
+ </div>
+<%end%>
+<% end %> 

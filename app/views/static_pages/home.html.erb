@@ -1,0 +1,75 @@
+<% if signed_in? %>
+<%= link_to gravatar_for(current_user, size: 50), current_user %>
+<h1><%= current_user.name %></h1> 
+<span><%= link_to "view my profile", current_user %></span>
+<span><%= pluralize(current_user.microposts.count, "micropost") %></span>
+
+<div class = col-md-6>
+
+    <%= form_for(@micropost, html: { multipart: true }) do |f| %>
+  <%=f.label :Towns %>
+<%=f.collection_select :town_id,Town.all,:id,:name, prompt:true %>
+<% if @micropost.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      The form contains <%= pluralize(@micropost.errors.count, "error") %>.
+    </div>
+    <ul>
+    <% @micropost.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+ <div class ="field">
+  <%=f.label :region %>  <br/>
+  <%=f.text_field :region %>
+ </div>
+<div class ="field">
+  <%=f.label :price %><br/>
+  <%=f.text_field :price %> 
+ </div>
+<div class ="field">
+  <%=f.label :details %><br/>      
+ <%= f.text_area :details,class:"text" ,placeholder:"include contact details" %> 
+ </div>
+<div class ="btn btn-primary">
+  <%=f.submit "Post" %><br/>
+ </div>
+ <span class="picture">
+ <%=f.label :picture %><br/>
+    <%= f.file_field :picture,accept: 'image/jpeg,image/gif,image/png' %>
+  </span>
+
+ <div class="col-md-6" style="padding-left:750px,">
+    <strong> <u>  <h3>Micropost Feed</h3></u>      </strong>
+      <%= render 'shared/feed' %>
+   
+    </div>
+
+ </div>
+
+
+
+<%end%>
+<script type="text/javascript">
+  $('#micropost_picture').bind('change', function() {
+    var size_in_megabytes = this.files[0].size/1024/1024;
+    if (size_in_megabytes > 5) {
+      alert('Maximum file size is 5MB. Please choose a smaller file.');
+    }
+  });
+</script>
+
+<% else %>
+
+<body>
+  <h1>Home</h1>
+<p>This is the home page for the
+
+Land Business website
+  </p>
+
+<%= link_to "Sign up now!", '/users/new', :class => "signup_button round" %>
+
+<%end%>
