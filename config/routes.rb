@@ -16,13 +16,21 @@ Rails.application.routes.draw do
 
   get 'password_resets/edit'
 
+ resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+
+
  resources :users
  resources :sessions, :only => [:new,:create,:destroy]
  resources :account_activations, only:[:edit]
  resources :password_resets,     only: [:new, :create, :edit, :update]
  resources :microposts,          only: [:create, :destroy,:show]
  resources :towns,          only: [:index,:new,:destroy,:create]
- resources :user_requests,          only: [:index,:new,:destroy,:create]
+ resources :user_requests,    only: [:index,:new,:destroy,:create]
+ resources :relationships,       only: [:create, :destroy]
 
  root 'static_pages#home'
 get '/users', to: 'users#index'
@@ -32,11 +40,11 @@ get '/signup', to: 'users#new'
 get '/towns', to: 'towns#new'
 get '/edit', to: 'users#edit'
 get '/profile', to: 'users#show'
-  get 'home', to: 'static_pages#home'
-  get 'contact', to: 'static_pages#contact'
-  get 'help', to: 'static_pages#help'
-  get 'about', to: 'static_pages#about'
-	get 'notifications', to:'notifications#index'
+get 'home', to: 'static_pages#home'
+get 'contact', to: 'static_pages#contact'
+get 'help', to: 'static_pages#help'
+get 'about', to: 'static_pages#about'
+get 'notifications', to:'notifications#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
