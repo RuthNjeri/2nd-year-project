@@ -33,18 +33,20 @@ Rails.application.routes.draw do
  resources :relationships,       only: [:create, :destroy]
 
  root 'static_pages#home'
-get '/users', to: 'users#index'
-get '/signin', to: 'sessions#new'
-get '/signout', to: 'sessions#destroy'
-get '/signup', to: 'users#new'
-get '/towns', to: 'towns#new'
-get '/edit', to: 'users#edit'
-get '/profile', to: 'users#show'
-get 'home', to: 'static_pages#home'
-get 'contact', to: 'static_pages#contact'
-get 'help', to: 'static_pages#help'
-get 'about', to: 'static_pages#about'
-get 'notifications', to:'notifications#index'
+
+match 'users', to: 'users#index', via: :get
+match 'signin', to: 'sessions#new', via: :get
+match  'signout', to: 'sessions#destroy', via: :get
+match  'signup', to: 'users#new', via: :get
+match 'towns', to: 'towns#new', via: :get
+match  'edit', to: 'users#edit', via: :get
+match  'profile', to: 'users#show', via: :get
+match  'home', to: 'static_pages#home', via: :get
+match  'contact', to: 'static_pages#contact', via: :get
+match 'what_to_know', to: 'static_pages#what_to_know', via: :get
+match  'help', to: 'static_pages#help', via: :get
+match  'about', to: 'static_pages#about', via: :get
+match  'notifications', to:'notifications#index', via: :get
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

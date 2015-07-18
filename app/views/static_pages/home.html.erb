@@ -33,16 +33,17 @@
  </div>
 <div class ="field">
   <%=f.label :details %><br/>      
- <%= f.text_area :details,class:"text" ,placeholder:"include contact details" %> 
+ <%= f.text_area :details,class:"text",placeholder:"include contact details" %> 
  </div>
-<div class ="btn btn-primary">
-  <%=f.submit "Post" %><br/>
- </div>
+
  <span class="picture">
  <%=f.label :picture %><br/>
     <%= f.file_field :picture,accept: 'image/jpeg,image/gif,image/png' %>
   </span>
-
+<div class ="btn btn-primary">
+  <%=f.submit "Post" %><br/>
+ </div>
+<h1> Microposts</h1>
  <div class="col-md-6" style="padding-left:750px,">
     <strong> <u>  <h3>Micropost Feed</h3></u>      </strong>
       <%= render 'shared/feed' %>

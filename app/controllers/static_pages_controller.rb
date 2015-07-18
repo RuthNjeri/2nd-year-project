@@ -4,13 +4,15 @@ class StaticPagesController < ApplicationController
 @title = "Home"
  if signed_in?
  @micropost  = current_user.microposts.build
- @feed_items = current_user.feed.paginate(page: params[:page])
+@feed_items = current_user.feed.paginate(page: params[:page])
  
   end
-  
  end
  
-
+ 
+  def what_to_know
+@title = "What To Know"
+  end
   def help
 @title = "Help"
   end
