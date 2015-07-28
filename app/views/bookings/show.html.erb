@@ -1,0 +1,21 @@
+<table>
+	<thead>
+		<tr><th>Bookings</th><th> Region</th></tr>
+	</thead>
+	<tbody>
+		<%@microposts.each do |m| %>
+		<tr>
+		<td>
+		<% if !Booking.find_by(user_id: current_user.id, micropost_id: m.id) %>
+			<%= link_to "Book", bookings_create_path+"?micropost_id="+m.id.to_s%> 
+			<% else %> 
+			<%= link_to "Unbook", bookings_destroy_path+"?micropost_id="+m.id.to_s%> 
+		<% end %>
+		</td>
+		<td>
+			<%=m.region%>
+		</td>
+		
+		 <%end%>
+	</tbody>
+</table>

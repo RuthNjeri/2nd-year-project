@@ -5,7 +5,8 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w(blueprint/screen.css )
 Rails.application.config.assets.precompile += %w(blueprint/print.css )
 Rails.application.config.assets.precompile += %w(blueprint/custom.css )
-
+Rails.application.config.assets.precompile += %w( blueprint/min.css )
+Rails.application.config.assets.precompile += %w( blueprint/bootstrap.css )
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path
 

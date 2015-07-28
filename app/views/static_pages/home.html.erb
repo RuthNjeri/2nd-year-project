@@ -1,12 +1,6 @@
 <% if signed_in? %>
-<%= link_to gravatar_for(current_user, size: 50), current_user %>
-<h1><%= current_user.name %></h1> 
-<span><%= link_to "view my profile", current_user %></span>
-<span><%= pluralize(current_user.microposts.count, "micropost") %></span>
-<section class = "stats">
- <%= render 'shared/statistics' %>
-</section>
 <div class = col-md-6>
+<h1> post Land</h1>
 
     <%= form_for(@micropost, html: { multipart: true }) do |f| %>
   <%=f.label :Towns %>
@@ -32,8 +26,8 @@
   <%=f.text_field :price %> 
  </div>
 <div class ="field">
-  <%=f.label :details %><br/>      
- <%= f.text_area :details,class:"text",placeholder:"include contact details" %> 
+  <%=f.label :type %><br/>      
+ <%= f.text_field :details,placeholder: "Freehold/leasehold"%> 
  </div>
 
  <span class="picture">
@@ -45,7 +39,6 @@
  </div>
 <h1> Microposts</h1>
  <div class="col-md-6" style="padding-left:750px,">
-    <strong> <u>  <h3>Micropost Feed</h3></u>      </strong>
       <%= render 'shared/feed' %>
    
     </div>
@@ -67,10 +60,8 @@
 <% else %>
 
 <body>
-  <h1>Home</h1>
-<p>This is the home page for the
-
-Land Business website
+  <h1 style="color:green">Hi :-)</h1>
+<p style="font-size:160%" ><b> Welcome to the Land Online Business.</b><br>Please sign up if you are a new user
   </p>
 
 <%= link_to "Sign up now!", '/users/new', :class => "signup_button round" %>

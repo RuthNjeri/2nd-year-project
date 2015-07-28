@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150714064854) do
+ActiveRecord::Schema.define(version: 20150728123435) do
+
+  create_table "bookings", force: :cascade do |t|
+    t.integer  "user_id",      null: false
+    t.integer  "micropost_id", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "bookings", ["micropost_id"], name: "index_bookings_on_micropost_id"
+  add_index "bookings", ["user_id"], name: "index_bookings_on_user_id"
 
   create_table "microposts", force: :cascade do |t|
     t.string   "region"
@@ -66,7 +76,22 @@ ActiveRecord::Schema.define(version: 20150714064854) do
   add_index "user_requests", ["town_id"], name: "index_user_requests_on_town_id"
   add_index "user_requests", ["user_id"], name: "index_user_requests_on_user_id"
 
-# Could not dump table "users" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
+  create_table "users", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.string   "encrypted_password"
+    t.boolean  "admin",              default: false
+    t.string   "rest_digest"
+    t.datetime "rest_sent_at"
+    t.string   "surname"
+    t.string   "activation_digest"
+    t.boolean  "activated",          default: false
+    t.datetime "activated_at"
+    t.string   "salt"
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
 
 end

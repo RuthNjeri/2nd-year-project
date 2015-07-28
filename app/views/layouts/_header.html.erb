@@ -1,0 +1,35 @@
+<header>
+      <%= link_to image_tag("images.jpg", :alt =>"Land", :class=>"round"),root_path %>
+       <nav class ="round">
+        <ul>
+         <li><%= link_to 'Home', root_path %></li>
+         <% if signed_in?%>
+       
+           <li><%= link_to 'What to Know', what_to_know_path %></li>   
+    <li><%= link_to 'Request Land', new_user_request_path %></li>  <li><%= link_to 'Users', '/users' %></li>
+           <li><%= link_to 'Profile', current_user %></li>
+        <%if  current_user.admin? %>        
+           <li> <%= link_to "New town", new_town_path %></li>
+            <%end%>
+          <li><%= link_to 'Notification '+Notification.where(user_id:current_user.id, seen:false).size.to_s, notifications_path %></li>
+     <li><%= link_to 'Settings', edit_user_path(current_user) %></li>
+           
+ 						<%end%>
+           
+			
+          
+  
+          
+         <li><%= link_to 'Help', help_path %></li>
+          <% if signed_in? %>
+           <li><%= link_to 'Sign out', signout_path %> </li>
+         <%else%>
+           <li><%= link_to 'Sign in', signin_path, aff:" " %> </li>
+         <%end%>
+      
+     
+      
+        </ul>			
+
+      </nav>
+   </header> 

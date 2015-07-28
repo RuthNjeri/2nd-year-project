@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
  
+  get 'bookings/create'
+
+  get 'bookings/destroy'
+
   get 'notifications/index'
 
   get 'user_requests/index'
@@ -24,13 +28,14 @@ Rails.application.routes.draw do
 
 
  resources :users
- resources :sessions, :only => [:new,:create,:destroy]
+ resources :sessions,  only: [:new,:create,:destroy]
  resources :account_activations, only:[:edit]
  resources :password_resets,     only: [:new, :create, :edit, :update]
  resources :microposts,          only: [:create, :destroy,:show]
  resources :towns,          only: [:index,:new,:destroy,:create]
  resources :user_requests,    only: [:index,:new,:destroy,:create]
  resources :relationships,       only: [:create, :destroy]
+  resources :bookings,       only: [:create, :destroy, :show]
 
  root 'static_pages#home'
 
@@ -42,6 +47,8 @@ match 'towns', to: 'towns#new', via: :get
 match  'edit', to: 'users#edit', via: :get
 match  'profile', to: 'users#show', via: :get
 match  'home', to: 'static_pages#home', via: :get
+match  'search_land', to: 'static_pages#search_land', via: :get
+match  'bookings', to: 'bookings#show', via: :get
 match  'contact', to: 'static_pages#contact', via: :get
 match 'what_to_know', to: 'static_pages#what_to_know', via: :get
 match  'help', to: 'static_pages#help', via: :get

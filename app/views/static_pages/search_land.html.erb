@@ -1,0 +1,35 @@
+<table>
+	<thead>
+		<tr><th>Town</th><th> Region</th><th>Price</th><th>Contact</th><th>Type</th><th colspan="2">User</th></tr>
+	</thead>
+	<tbody>
+		<%@micropost.each do |m| %>
+		<tr>
+			<td><%=Town.find(m.town_id).name%></td>
+		
+		<td>
+			<%=m.region%>
+		</td>
+		<td>
+			<%=m.price%>
+		</td>
+		<td>
+			<%=m.user.email%>
+		</td>
+		<td>
+			<%=m.details%>
+		</td>
+
+		<td>
+			<%= link_to m.user.name, user_path(m.user) %>
+		</td>
+		<td>
+		<% if !Booking.find_by(user_id: current_user.id, micropost_id: m.id) %>
+			<%= link_to "Book", bookings_create_path+"?micropost_id="+m.id.to_s%> 
+			<% else %> 
+			<%= link_to "Unbook", bookings_destroy_path+"?micropost_id="+m.id.to_s%> 
+		<% end %>
+		</td>
+		 <%end%>
+	</tbody>
+</table>

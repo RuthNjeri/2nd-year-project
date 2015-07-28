@@ -12,20 +12,22 @@
 <body>
    <div class="container">
      <header>
-      <%= link_to image_tag("images.jpg", :alt =>"Land", :class=>"round"),root_path %>
+      <%= link_to image_tag("images.jpg", :alt =>"Land", :class=>"round"),root_path ,aff:" " %>
        <nav class ="round">
         <ul>
-         <li><%= link_to 'Home', root_path %></li>
+         <li><%= link_to 'Home', root_path ,aff:" " %></li>
          <% if signed_in?%>
-       
-           <li><%= link_to 'What to Know', what_to_know_path %></li>   
-    <li><%= link_to 'Request Land', new_user_request_path %></li>  <li><%= link_to 'Users', '/users' %></li>
-           <li><%= link_to 'Profile', current_user %></li>
-        <%if  current_user.admin? %>        
-           <li> <%= link_to "New town", new_town_path %></li>
+          <li><%= link_to 'Bookings', bookings_path,aff:" "  %></li> 
+           <li><%= link_to 'What to Know', what_to_know_path,aff:" "  %></li>   
+            <li><%= link_to 'Search Land', search_land_path ,aff:" " %></li>   
+             <li><%= link_to 'Request Land', new_user_request_path ,aff:" " %></li> 
+            <li><%= link_to 'Users', '/users' ,aff:" " %></li>
+           <li><%= link_to 'Profile', current_user,aff:" "  %></li>
+           <%if  current_user.admin? %>        
+           <li> <%= link_to "New town", new_town_path,aff:" "  %></li>
             <%end%>
-          <li><%= link_to 'Notification '+Notification.where(user_id:current_user.id, seen:false).size.to_s, notifications_path %></li>
-     <li><%= link_to 'Settings', edit_user_path(current_user) %></li>
+          <li><%= link_to 'Notification '+Notification.where(user_id:current_user.id, seen:false).size.to_s, notifications_path ,aff:" " %></li>
+     <li><%= link_to 'Settings', edit_user_path(current_user),aff:" "  %></li>
            
  						<%end%>
            
@@ -33,11 +35,11 @@
           
   
           
-         <li><%= link_to 'Help', help_path %></li>
+         <li><%= link_to 'Help', help_path ,aff:" "  %></li>
           <% if signed_in? %>
-           <li><%= link_to 'Sign out', signout_path %> </li>
+           <li><%= link_to 'Sign out', signout_path ,aff:" " %> </li>
          <%else%>
-           <li><%= link_to 'Sign in', signin_path %> </li>
+           <li><%= link_to 'Sign in', signin_path ,aff:" "  %> </li>
          <%end%>
       
      
@@ -55,12 +57,11 @@
 
 
     </section>
-     <%=debug(params) if Rails.env.development?%>
      <footer>
     <nav class="round">
    <ul>
-   <li><%=link_to "About", about_path%></li>
-   <li><%=link_to "Contact", contact_path%></li>
+   <li><%=link_to "About", about_path ,aff:" " %></li>
+   <li><%=link_to "Contact", contact_path,aff:" " %></li>
    </ul>
    </nav>
   </footer>

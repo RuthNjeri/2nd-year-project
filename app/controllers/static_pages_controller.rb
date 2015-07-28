@@ -8,7 +8,10 @@ class StaticPagesController < ApplicationController
  
   end
  end
- 
+ def search_land
+  @micropost=Micropost.all
+
+ end
  
   def what_to_know
 @title = "What To Know"
