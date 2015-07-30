@@ -237,3 +237,55 @@ aside {
 .users.follow {
   padding: 0;
 }
+.dropdown-menu
+{
+  position: absolute;
+  top: 20px;
+  z-index: 9999;
+  background-color: white;
+  border: 1px #EEEEEE solid;
+  border-radius: 5px; 
+
+}
+
+.dropdown-menu li{
+  display: block;
+}
+
+.hidden{
+  display: none;
+}
+
+.show{
+}
+
+.ovr-hidden{
+  overflow: hidden;
+}
+
+.float-left{
+  float: left;
+}
+
+.float-right{
+  float: right;
+}
+
+.feed{
+  width:65%;
+  border-left: 1px solid #eeeeee;
+  padding-left: 2%;
+}
+
+.micropost-partial{
+  margin: 20px 0px;
+  border-bottom: 1px solid #eeeeee;
+  padding-bottom: 20px;
+}
+
+.micropost-content{
+  width: 85%;
+}
+
+.user-info{
+}

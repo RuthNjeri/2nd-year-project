@@ -1,7 +1,8 @@
 <% if signed_in? %>
-<div class = col-md-6>
-<h1> post Land</h1>
+<div class = "col-md-6 ovr-hidden">
 
+<div class="float-left">
+<h1> Sell Land</h1>
     <%= form_for(@micropost, html: { multipart: true }) do |f| %>
   <%=f.label :Towns %>
 <%=f.collection_select :town_id,Town.all,:id,:name, prompt:true %>
@@ -37,17 +38,19 @@
 <div class ="btn btn-primary">
   <%=f.submit "Post" %><br/>
  </div>
+
+
+
+<%end%>
+</div>
+<div class="feed float-right">
 <h1> Microposts</h1>
  <div class="col-md-6" style="padding-left:750px,">
       <%= render 'shared/feed' %>
    
     </div>
-
+</div>
  </div>
-
-
-
-<%end%>
 <script type="text/javascript">
   $('#micropost_picture').bind('change', function() {
     var size_in_megabytes = this.files[0].size/1024/1024;

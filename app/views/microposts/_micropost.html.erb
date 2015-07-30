@@ -1,12 +1,13 @@
-<li id="micropost-<%= micropost.id %>">
-  <%= link_to gravatar_for(micropost.user, size: 30), micropost.user %>
-  <span class="user"><%= link_to micropost.user.name, micropost.user %></span>
-
+<li id="micropost-<%= micropost.id %>" class="micropost-partial ovr-hidden">
+ <div class=" user-info float-left"> 
+ <div><%= link_to gravatar_for(micropost.user, size: 30), micropost.user %></div>
+  <%= link_to micropost.user.name, micropost.user %>
+</div>
+<div class="micropost-content float-right">
   <span class="content"><%= micropost.region %></span>
   <span class="content"><%= micropost.price %></span>
   <span class="content"><%= micropost.details %>
- <%= image_tag micropost.picture.url if micropost.picture? %></span>
-  <span class="timestamp">
+    <span class="timestamp">
   <font color="green">  Posted <%= time_ago_in_words(micropost.created_at) %> ago.</font>
 <% if current_user?(micropost.user) %>
   <%= link_to "delete", micropost, method: :delete,
@@ -14,4 +15,8 @@
 <% end %>
 
   </span>
+  </span>
+ <div><%= image_tag micropost.picture.url if micropost.picture? %></div>
+ </div>
+
 </li>
