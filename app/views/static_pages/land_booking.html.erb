@@ -1,0 +1,16 @@
+<h1>Land Booked By Potential Buyers</h1>
+<table>
+	<thead>
+		<tr><th> Region</th><th> User</th>
+	<tbody>
+		<%@booking.each do |y| %>
+		<tr>
+			<td><%=Micropost.find(y.micropost_id).region%></td>
+		<td>
+			<%= y.user.name%>
+		
+		</td>
+		
+		 <%end%>
+	</tbody>
+</table>

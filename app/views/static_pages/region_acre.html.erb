@@ -1,0 +1,18 @@
+<h1>Land Posted With Size</h1>
+<table>
+	<thead>
+		<tr><th> Region</th><th> Size</th>
+	<tbody>
+		<%@micropost.each do |z| %>
+		<tr>
+		
+		<td>
+			<%=z.region%>
+		</td>
+		<td>
+			<%=z.size%>
+		</td>
+		
+		 <%end%>
+	</tbody>
+</table>

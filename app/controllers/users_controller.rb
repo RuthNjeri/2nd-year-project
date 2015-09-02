@@ -79,6 +79,10 @@ def followers
   @user  = User.find(params[:id])
   @users = @user.followers.paginate(page: params[:page])
 end
+ def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_url) unless current_user?(@user)
+    end
  private
  
   def authenticate

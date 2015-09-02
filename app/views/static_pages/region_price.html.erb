@@ -1,0 +1,19 @@
+<h1>Land Posted With Price</h1>
+<table>
+	<thead>
+		<tr><th> Town</th><th> Region</th><th>Price</th>
+	<tbody>
+		<%@micropost.each do |x| %>
+		<tr>
+			<td><%=Town.find(x.town_id).name%></td>
+		
+		<td>
+			<%=x.region%>
+		</td>
+		<td>
+			<%=x.price%>
+		</td>
+		
+		 <%end%>
+	</tbody>
+</table>

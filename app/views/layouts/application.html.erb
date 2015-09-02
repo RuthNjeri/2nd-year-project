@@ -32,34 +32,34 @@
        <nav class ="round">
         <ul>
          <li><%= link_to 'Home', root_path ,aff:" "%></li>
+          
          <% if signed_in?%>
          <li class="dropdown">
             <a href="#" class="dropdown-toggle"  data-toggle="dropdown" >Buyers</a>
-            <ul class="dropdown-menu hidden" >
-              <li><%= link_to 'Bookings', bookings_path,aff:" "  %></li> 
+            <ul class="dropdown-menu hidden" > 
               <li><%= link_to 'What to Know', what_to_know_path,aff:" "  %></li>   
               <li><%= link_to 'Search Land', search_land_path ,aff:" " %></li>   
-               <li><%= link_to 'Request Land', new_user_request_path ,aff:" " %></li> 
+               <li><%= link_to 'Request Land', new_user_request_path ,aff:" " %></li>
+                <li><%= link_to 'Bookings', bookings_path,aff:" "  %></li> 
           </ul>
-         
          </li>
-            <li><%= link_to 'Users', '/users' ,aff:" " %></li>
+         <li> <%= link_to "Sellers", root_path,aff:" "  %></li>
+          <%if  current_user.admin? %>        
+           <li> <%= link_to "New town", new_town_path,aff:" "  %></li>
+            <%end%>
            <li><%= link_to 'Profile', current_user,aff:" "  %></li>
           <li><%= link_to 'Notification '+Notification.where(user_id:current_user.id, seen:false).size.to_s, notifications_path ,aff:" " %></li>
            <li><%= link_to 'Settings', edit_user_path(current_user),aff:" "  %></li>
-           <% if signed_in? %>
+          
            <li><%= link_to 'Sign out', signout_path ,aff:" " %> </li>
+            <li><%= link_to 'Users', '/users' ,aff:" " %></li>
+           <li><%= link_to 'Reports', reports_path ,aff:" " %> </li>
          <%else%>
            <li><%= link_to 'Sign in', signin_path ,aff:" "  %> </li>
          <%end%>
-           <li><%= link_to 'Help', help_path ,aff:" "  %></li>
- 						<%end%>
-          
-      
-      <%if  current_user.admin? %>        
-           <li> <%= link_to "New town", new_town_path,aff:" "  %></li>
-            <%end%>
-      
+ 				<li><%= link_to 'Help', help_path ,aff:" "  %></li>     
+           
+         </li>
         </ul>			
 
       </nav>

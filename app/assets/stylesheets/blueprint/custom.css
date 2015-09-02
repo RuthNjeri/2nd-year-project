@@ -171,12 +171,12 @@ list-style: none;
   }
 }
 
-aside {
-  textarea {
-    height: 25px;
-    margin-bottom: 5px;
+
+  .textarea {
+    height: 2px;
+   
   }
-}
+
 
 span.picture {
   margin-top: 10px;
@@ -189,16 +189,11 @@ span.picture {
 
 
 .text{
-height:40px;
+height:400px;
 width:40px;
 }
 
-aside {
-  textarea {
-    height: 100px;
-    margin-bottom: 5px;
-  }
-}
+
 
 .stats {
   overflow: auto;

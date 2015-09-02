@@ -3,9 +3,7 @@
 
 <div class="float-left">
 <h1> Sell Land</h1>
-    <%= form_for(@micropost, html: { multipart: true }) do |f| %>
-  <%=f.label :Towns %>
-<%=f.collection_select :town_id,Town.all,:id,:name, prompt:true %>
+ 
 <% if @micropost.errors.any? %>
   <div id="error_explanation">
     <div class="alert alert-danger">
@@ -18,9 +16,16 @@
     </ul>
   </div>
 <% end %>
+   <%= form_for(@micropost, html: { multipart: true }) do |f| %>
+  <%=f.label :Towns %>
+<%=f.collection_select :town_id,Town.all,:id,:name, prompt:true %>
  <div class ="field">
   <%=f.label :region %>  <br/>
   <%=f.text_field :region %>
+ </div>
+  <div class ="field">
+  <%=f.label :size %><br/>      
+ <%= f.text_field :size,placeholder: "acre"%> 
  </div>
 <div class ="field">
   <%=f.label :price %><br/>
@@ -30,7 +35,6 @@
   <%=f.label :type %><br/>      
  <%= f.text_field :details,placeholder: "Freehold/leasehold"%> 
  </div>
-
  <span class="picture">
  <%=f.label :picture %><br/>
     <%= f.file_field :picture,accept: 'image/jpeg,image/gif,image/png' %>
@@ -67,6 +71,6 @@
 <p style="font-size:160%" ><b> Welcome to the Land Online Business.</b><br>Please sign up if you are a new user
   </p>
 
-<%= link_to "Sign up now!", '/users/new', :class => "signup_button round" %>
+<%= link_to "Sign up now!", signup_path,aff:" " ,:class => "signup_button round" %>
 
 <%end%>

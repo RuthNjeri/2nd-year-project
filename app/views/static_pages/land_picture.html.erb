@@ -1,0 +1,19 @@
+<h1>Land Posted With Pictures</h1>
+<table>
+	<thead>
+		<tr><th> Region</th><th> Picture</th>
+	<tbody>
+		<%@micropost.each do |r| %>
+		<tr>
+		
+		<td>
+			<%=r.region%>
+		</td>
+		<td>
+			<%= link_to r.picture, user_path(r.user)%>
+		
+		</td>
+		
+		 <%end%>
+	</tbody>
+</table>

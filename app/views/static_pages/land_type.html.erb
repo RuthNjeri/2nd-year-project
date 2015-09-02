@@ -1,0 +1,19 @@
+<h1>Land Posted With Type</h1>
+<table>
+	<thead>
+		<tr><th> Region</th><th> Type</th>
+	<tbody>
+		<%@micropost.each do |w| %>
+		<tr>
+		
+		<td>
+			<%=w.region%>
+		</td>
+		<td>
+			<%= w.details%>
+		
+		</td>
+		
+		 <%end%>
+	</tbody>
+</table>

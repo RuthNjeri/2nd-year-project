@@ -47,7 +47,15 @@ match 'towns', to: 'towns#new', via: :get
 match  'edit', to: 'users#edit', via: :get
 match  'profile', to: 'users#show', via: :get
 match  'home', to: 'static_pages#home', via: :get
+match  'Sellers', to: 'static_pages#home', via: :get
 match  'search_land', to: 'static_pages#search_land', via: :get
+match  'region_price', to: 'static_pages#region_price', via: :get
+match  'region_acre', to: 'static_pages#region_acre', via: :get
+match  'land_picture', to: 'static_pages#land_picture', via: :get
+match  'land_type', to: 'static_pages#land_type', via: :get
+match  'land_booking', to: 'static_pages#land_booking', via: :get
+match  'requests', to: 'static_pages#requests', via: :get
+match  'reports', to: 'static_pages#reports', via: :get
 match  'bookings', to: 'bookings#show', via: :get
 match  'contact', to: 'static_pages#contact', via: :get
 match 'what_to_know', to: 'static_pages#what_to_know', via: :get

@@ -1,0 +1,16 @@
+<h1>Land Requests By Potential Buyers</h1>
+<table>
+	<thead>
+		<tr><th> Town</th><th> User</th>
+	<tbody>
+		<%@userrequest.each do |z| %>
+		<tr>
+			<td><%=Town.find(z.town_id).name%></td>
+		
+		<td>
+		<%=z.user.name%>
+		</td>
+		
+		 <%end%>
+	</tbody>
+</table>
